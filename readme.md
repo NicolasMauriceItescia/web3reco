@@ -1,9 +1,22 @@
 #Péhachepet Market
 
+##Structure du projet
+| Répertoire  | Contenu  |
+| ------------ | ------------ |
+| ./  | Pages accueil users  |
+| ./admin/  | Pages opérations admin  |
+| ./css/  | Fichier(s) CSS |
+| ./customer/  | Pages opérations client  |
+| ./included/  | Pages HTML à inclure  |
+| ./misc/  | Divers / non classé  |
+| ./pictures/  | Images éventuelles  |
+
+
+##Complétion des Stories
 Statuts: TO DO | WIP | DONE
 
 - US 1A: TO DO
-Concevoir une base de données et peupler cette base de données Livrable = un script .sql contenant une exportation de la base de données:
+Concevoir une base de données et peupler cette base de données Livrable = un script .sql contenant une exportation de la base de données
 
 - US 1B: TO DO
 Traiter des données issues d’un formulaire web avec la méthode GET
