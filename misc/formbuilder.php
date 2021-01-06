@@ -17,12 +17,15 @@ class formBuilder{
        return $output;
     }
 
-    public function getBooksByCat(){
+    public function getBooksByCat($bookTypes){
         //Method: GET
         //<select> to choose the book type, submit
         $output = "";
             $output .= "<form action='' method='GET'>";
-            $output .= "<input type='text' id='' name='namestring'>";
+            $output .= "<select name= 'namestring' >";
+            $output .= "echo $bookTypes; ";
+            $output .= "</select>";
+           // $output .= "<input type='text' id='' name='namestring'>";
             $output .=  "<button type='submit'>Valider</button>";
             $output .=  "</form>";
     
