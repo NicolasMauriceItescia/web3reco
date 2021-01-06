@@ -35,12 +35,12 @@ body{
 	height: 7em;
 }
 
-ul li{
+li{
 	list-style-type: none;
 	padding: 0.5em;
 }
 
-ul li:hover{
+li:hover{
 	background-color: var(--hover);
 	color: var(--light);
 }
