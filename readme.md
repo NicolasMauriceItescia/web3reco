@@ -15,7 +15,7 @@
 ##Complétion des Stories
 Statuts: TO DO | WIP | DONE
 
-- US 1A: TO DO
+- US 1A: DONE
 Concevoir une base de données et peupler cette base de données Livrable = un script .sql contenant une exportation de la base de données
 
 - US 1B: TO DO
@@ -30,14 +30,14 @@ Construire des formulaires HTML simples (texte sur une ligne)
 - US 1E: TO DO
 Construire des formulaires HTML avancés (texte sur plusieurs lignes, liste d'options, case à cocher, bouton radio)
 
-- US 1F: TO DO
+- US 1F: WIP
 Créer une classe PHP permettant de construire un formulaire HTML et utiliser cette classe pour construire tous les formulaires du site
 
-- US 1G: TO DO
+- US 1G: WIP
 Créer une classe PHP permettant de calculer le prix total d’un panier et utiliser une instance de cette classe
 
 - US 1H: TO DO
-Afficher des données issues d'une base de données : Utiliser SELECT depuis une page web: TO DO
+Afficher des données issues d'une base de données : Utiliser SELECT depuis une page web
 
 - US 1J: TO DO 
 Ajouter des données : Utiliser INSERT depuis une page web

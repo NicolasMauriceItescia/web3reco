@@ -14,10 +14,10 @@
     	<main>
     		<article>
     			<header class="sub-banner">
-    				<h2>Search by name or description</h2>
+    				<h2>Search by description</h2>
     			</header>
     			<ul>
-                    <li class="back"><a href="../customer.php">Page précédente</a></li>
+                    <li class="back"><a href="../customer.php">Previous page</a></li>
                 </ul>
     		</article>
     	</main>
