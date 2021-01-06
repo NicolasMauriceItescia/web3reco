@@ -21,12 +21,10 @@ class formBuilder{
         //Method: GET
         //<select> to choose the book type, submit
         $output = "";
-        foreach ($form as $line) {
             $output .= "<form action='' method='GET'>";
-            $output .= "<input type='text' id='' name=''>";
+            $output .= "<input type='text' id='' name='namestring'>";
             $output .=  "<button type='submit'>Valider</button>";
             $output .=  "</form>";
-       }
     
        return $output;
     }
@@ -35,12 +33,11 @@ class formBuilder{
         //Method: GET
         //1 textfield, submit
         $output = "";
-        foreach ($form as $line) {
             $output .= "<form action='' method='GET'>";
-            $output .= "<input type='text' id='' name=''>";
+            $output .= "<input type='text' id='' name='namestring'>";
             $output .=  "<button type='submit'>Valider</button>";
             $output .=  "</form>";
-       }
+       
     
        return $output;
     }

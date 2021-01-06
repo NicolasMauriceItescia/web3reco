@@ -21,7 +21,7 @@
                         <?php 
                             require("../misc/formbuilder.php");
                             $form = new formBuilder();
-                            echo $form->getBooksByCat();
+                            echo $form->getBooksByDesc();
                             
                         ?>
                     </div>
@@ -31,7 +31,7 @@
                                 if(isset($_GET['namestring'])){
                                     require("../included/dbconnect.php");
                                     $namestring = $_GET['namestring'];
-                                    $sql = "SELECT nameProduct, price FROM product WHERE desscription LIKE '%$namestring%'";
+                                    $sql = "SELECT nameProduct, price FROM Product WHERE description LIKE '%$namestring%'";
                                     $result = $dbh->query($sql);
                                     $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
                                     foreach ($resultTable as $entry) {

@@ -28,6 +28,7 @@
                     </div>
                     <div class="result">
                         <ul>
+            
                         <?php 
                             if(isset($_GET['namestring'])){
                                 require("../included/dbconnect.php");
