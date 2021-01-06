@@ -18,8 +18,9 @@
     			</header>
     			<ul>
 					<li><a href="./customer/searchbycat.php">Search by category</a></li>
-					<li><a href="./customer/searchnamedesc.php">Search by name or description</a></li>
-					<li class="back"><a href="index.php">Retour à l'accueil</a></li>
+					<li><a href="./customer/searchbyname.php">Search by name</a></li>
+					<li><a href="./customer/searchbydesc.php">Search by description</a></li>
+					<li class="back"><a href="index.php">Logout</a></li>
     			</ul>
     		</article>
     	</main>

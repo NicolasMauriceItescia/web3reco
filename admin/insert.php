@@ -17,7 +17,7 @@
     				<h2>Add products to inventory</h2>
     			</header>
     			<ul>
-                    <li class="back"><a href="../admin.php">Page précédente</a></li>
+                    <li class="back"><a href="../admin.php">Previous page</a></li>
                 </ul>
     		</article>
     	</main>

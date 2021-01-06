@@ -17,7 +17,7 @@
     				<h2>Search by category</h2>
     			</header>
     			<ul>
-                    <li class="back"><a href="../customer.php">Page précédente</a></li>
+                    <li class="back"><a href="../customer.php">Previous page</a></li>
                 </ul>
     		</article>
     	</main>
