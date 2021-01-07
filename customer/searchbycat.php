@@ -1,14 +1,22 @@
 <?php 
     try{
         require("../included/dbconnect.php");
-        $bookTypes = "";
-        // Query
-        $sql = "SELECT name FROM CategorieProd"; 
+      
+        $bookTypes="";
+        
+        
+        // Query 1 => categories scroll
+        $sql = "SELECT name, typeId FROM CategorieProd"; 
         $result = $dbh->query($sql);
         // Show all the categories
-        while ( ($oneCategorie = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
-            $bookTypes .= '<option value ='.$oneCategorie['typeId'].' >' .$oneCategorie['name']. '</option>';
+        while ( ($oneType = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
+            $bookTypes .= '<option value ='.$oneType['typeId'].' >' .$oneType['name']. '</option>';
         }
+
+        function checkInput($dbh){
+            
+        }
+
         $dbh = null;
     }catch (Exception $e) {
         // Error handeling
@@ -54,12 +62,26 @@
                             require("../misc/formbuilder.php");
                             $form = new formBuilder();
                             echo $form->getBooksByCat($bookTypes);
+                            
                                 
                         ?>
                     </div>
                     <div class="result">
                         <ul>
-                            <?php 
+                            <?php
+                            require("../included/dbconnect.php");
+                            $selectedTypeId = (string) filter_input(INPUT_GET,'namestring',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            // Query 3 => show books of categorie choosen
+                            $bookList = "";
+                            $sql="SELECT nameProduct, price FROM Product WHERE typeId ='$selectedTypeId'";
+                            echo $sql;
+                            $result = $dbh->query($sql);
+                            echo $result;
+                             $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
+                                foreach ($resultTable as $entry) {
+                                    //var_dump($entry);
+                                    echo '<li>'.$entry["nameProduct"].'</li><br>';
+                                }
                             
                             ?>
                         </ul>
