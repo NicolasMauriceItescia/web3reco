@@ -1,6 +1,8 @@
 <?php 
     try{
-        require("../included/dbconnect.php");
+        require_once("../included/dbconnect.php");
+        require_once("../misc/formbuilder.php");
+        $form = new formbuilder();
       
         $bookTypes="";
         
@@ -17,7 +19,7 @@
             
         }
 
-        $dbh = null;
+        //$dbh = null;
     }catch (Exception $e) {
         // Error handeling
         echo '<!DOCTYPE html>';
@@ -59,8 +61,6 @@
                 <section>
                     <div class="operation">
                         <?php 
-                            require("../misc/formbuilder.php");
-                            $form = new formBuilder();
                             echo $form->getBooksByCat($bookTypes);
                             
                                 
@@ -69,15 +69,21 @@
                     <div class="result">
                         <ul>
                             <?php
-                            require("../included/dbconnect.php");
+                            require_once("../included/dbconnect.php");
                             $selectedTypeId = (string) filter_input(INPUT_GET,'namestring',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                             // Query 3 => show books of categorie choosen
                             $bookList = "";
                             $sql="SELECT nameProduct, price FROM Product WHERE typeId ='$selectedTypeId'";
-                            echo $sql;
+                            
                             $result = $dbh->query($sql);
-                            echo $result;
+                         
+                            if ($result == false){
+                                echo 'false probleme';
+                                exit;
+                            }
+                            //var_dump($result);  
                              $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
+
                                 foreach ($resultTable as $entry) {
                                     //var_dump($entry);
                                     echo '<li>'.$entry["nameProduct"].'</li><br>';
