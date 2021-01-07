@@ -5,19 +5,14 @@
         $form = new formbuilder();
       
         $bookTypes="";
-        
-        
+         
         // Query 1 => categories scroll
         $sql = "SELECT name, typeId FROM CategorieProd"; 
         $result = $dbh->query($sql);
         // Show all the categories
         while ( ($oneType = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
             $bookTypes .= '<option value ='.$oneType['typeId'].' >' .$oneType['name']. '</option>';
-        }
-
-        function checkInput($dbh){
-            
-        }
+        };
 
         //$dbh = null;
     }catch (Exception $e) {
@@ -61,15 +56,12 @@
                 <section>
                     <div class="operation">
                         <?php 
-                            echo $form->getBooksByCat($bookTypes);
-                            
-                                
+                            echo $form->getBooksByCat($bookTypes);        
                         ?>
                     </div>
                     <div class="result">
                         <ul>
                             <?php
-                            require_once("../included/dbconnect.php");
                             $selectedTypeId = (string) filter_input(INPUT_GET,'namestring',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                             // Query 3 => show books of categorie choosen
                             $bookList = "";

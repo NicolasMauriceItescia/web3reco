@@ -38,7 +38,7 @@
                 /* if(strpos("$e->getMessage()",'Duplicate entry')){
                     echo "<div class='error'>'An entry already exists with this ID'</div>";
                 } */
-                echo $e->getMessage()
+                echo $e->getMessage();
             }
         }
     }
@@ -63,7 +63,7 @@
                     <div class="operation">
                         <?php 
                             echo $form->addBook($catList);
-                            checkInput($dbh);
+                                checkInput($dbh);
                         ?>
 
                     </div>

@@ -83,16 +83,17 @@ class formBuilder{
        return $output;
     }
     
-    public function deleteBook(){
+    public function deleteBook($bookListSuppr){
         //Method: POST
         //1 <select> to choose the book title we want to delete, submit
         $output = "";
-        foreach ($form as $line) {
-            $output .= "<form action='' method='POST'>";
-            $output .= "<input type='' id='' name=''>";
-            $output .=  "<button type='submit'>Valider</button>";
-            $output .=  "</form>";
-       }
+        $output .= "<form action='' method='POST'>";
+        $output .= "<select name= 'bookToDelete' >";
+        $output .= "echo $bookListSuppr";
+        $output .= "</select>";
+        $output .=  "<button type='submit'>Valider</button>";
+        $output .=  "</form>";
+       
     
        return $output;
     }
