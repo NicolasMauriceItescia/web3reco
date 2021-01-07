@@ -11,6 +11,41 @@
         $e->getMessage();
     }
 
+    function checkInput(PDO $dbh){
+        if(isset($_POST['idProduct'])
+        && isset($_POST['nameProduct'])
+        && isset($_POST['description'])
+        && isset($_POST['stock'])){
+            $idProduct = $_POST['idProduct'];
+            $nameProduct = $_POST['nameProduct'];
+            $description = $_POST['description'];
+            $fairtrade;
+            if(isset($_POST['fairtrade']) && $_GET['fairtrade'] == 'Yes'){$fairtrade = 1;}else{$fairtrade = 0;}
+            $typeId = (string) filter_input(INPUT_POST, 'types', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $price = $_POST['price'];
+            $stock = $_POST['stock'];
+            if(!isset($_POST['discount'])){
+                $discount = 0;
+            }else{
+                $discount = $_POST['discount'];
+            }
+            $discount = $_POST['discount'];
+
+            $sql = "INSERT INTO Product (idProduct, nameProduct, description, fairtrade, typeId, price, stock, discount) 
+            VALUES ('$idProduct', '$nameProduct', '$description','$fairtrade','$typeId', '$price', '$stock', '$discount');";
+            try{
+                $dbh->query($sql);
+            }catch(Exception $e){
+                /* if(strpos("$e->getMessage()",'Duplicate entry')){
+                    echo "<div class='error'>'An entry already exists with this ID'</div>";
+                } */
+                echo $e->getMessage()
+            }
+            
+            
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -33,7 +68,7 @@
                             require("../misc/formbuilder.php");
                             $form = new formBuilder();
                             echo $form->addBook($typesTable);
-                            
+                            checkInput($dbh);
                         ?>
 
                     </div>

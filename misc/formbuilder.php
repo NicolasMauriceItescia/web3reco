@@ -55,12 +55,13 @@ class formBuilder{
         $output .= "<label for='idProduct'>Product ID</label><input type='text' id='' name='idProduct' required><br>";
         $output .= "<label for='nameProduct'>Product name</label><input type='text' id='' name='nameProduct' required><br>";
         $output .= "<label for='description'>Description</label><input type='text' id='' name='description' required><br>";
-        $output .= "<label for='fairtrade'>Fair trade</label><input type='checkbox' id='' name='fairtrade' required><br>";
+        $output .= "<label for='fairtrade'>Fair trade</label><input type='checkbox' id='' name='fairtrade'><br>";
         $output .= "<label for='types'>Book type</label><select name='types'>";
         $output .= "echo $typesTable";
         $output .= "</select><br>";
+        $output .= "<label for='stock'>Price</label><input type='text' id='' name='price' required><br>";
         $output .= "<label for='stock'>Quantity</label><input type='text' id='' name='stock' required><br>";
-        $output .= "<label for='discount'>Discount</label><input type='text' id='' name='discount' required><br>";
+        $output .= "<label for='discount'>Discount</label><input type='text' id='' name='discount'><br>";
         $output .=  "<button type='submit'>Valider</button>";
         $output .=  "</form>";
     
