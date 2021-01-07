@@ -1,5 +1,5 @@
 <?php 
-    
+    require("./included/checkifuser.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +20,7 @@
 					<li><a href="./customer/searchbycat.php">Search by category</a></li>
 					<li><a href="./customer/searchbyname.php">Search by name</a></li>
 					<li><a href="./customer/searchbydesc.php">Search by description</a></li>
-					<li class="back"><a href="index.php">Logout</a></li>
+					<li class="back"><a href="./misc/logout.php">Logout</a></li>
     			</ul>
     		</article>
     	</main>

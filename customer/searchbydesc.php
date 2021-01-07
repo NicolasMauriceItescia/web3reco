@@ -1,5 +1,5 @@
 <?php 
-    
+    require("../included/checkifuser.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
