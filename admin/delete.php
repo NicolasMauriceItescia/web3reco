@@ -11,10 +11,22 @@
         while(($oneBook = $result->fetch(PDO::FETCH_ASSOC)) !=FALSE){
             $bookListSuppr .= '<option value ='.$oneBook['idProduct'].' >' .$oneBook['nameProduct']. '</option>';
         };
+        
+        function deleteBook(PDO $dbh, $selectedBook){
+            $sql = "DELETE FROM product WHERE idProduct='$selectedBook'";
+            $result = $dbh->query($sql);
+        }
 
-        $selectedBook = (string) filter_input(INPUT_GET,'namestring',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $sql = "DELETE FROM Product WHERE nameProduct = '$selectedBook'";
-        $resultDelete = $dbh->query($sql);
+        function checkIfRemoved(PDO $dbh, $selectedBook){
+            $sql = "SELECT idProduct FROM product WHERE idProduct='$selectedBook'";
+            $result = $dbh->query($sql);
+            if($result){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         
     }catch(Exception $e){
         echo '<!DOCTYPE html>';
@@ -47,12 +59,15 @@
                     <div class = "operation">
                         <?php
                             echo $form-> deleteBook($bookListSuppr);
-                           
-                        ?>
-                    </div>
-                    <div class = "result">
-                        <?php
-                            echo $resultDelete;
+                            if(isset($_POST['bookToDelete'])){
+                                $selectedBook = (string) filter_input(INPUT_POST,'bookToDelete',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                                deleteBook($dbh, $selectedBook);
+                                if(checkIfRemoved($dbh, $selectedBook)){
+                                    echo('<div class="success">Product removed</div>');
+                                }else{
+                                    echo('<div class="error">Error: The product still exists</div>');
+                                }
+                            }
                         ?>
                     </div>
                 </section>
