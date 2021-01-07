@@ -1,11 +1,12 @@
 <?php 
     try{
         require("../included/dbconnect.php");
-        require("../misc/formbuilder.php");
-        $form = new formBuilder();
         $sql = "SELECT typeId, name FROM categorieprod";
         $result = $dbh->query($sql);
-        $catList = $result->fetch(PDO::FETCH_ASSOC);
+        $typesTable = "";
+        while ( ($entry = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
+            $typesTable .= '<option value="'.$entry['typeId'].'">'.$entry['name'].'</option>';
+        }
     }catch(Exception $e){
         $e->getMessage();
     }
@@ -40,6 +41,8 @@
                 } */
                 echo $e->getMessage();
             }
+            
+            
         }
     }
 
@@ -62,8 +65,11 @@
                 <section>
                     <div class="operation">
                         <?php 
-                            echo $form->addBook($catList);
-                                checkInput($dbh);
+
+                            require("../misc/formbuilder.php");
+                            $form = new formBuilder();
+                            echo $form->addBook($typesTable);
+                            checkInput($dbh);
                         ?>
 
                     </div>
