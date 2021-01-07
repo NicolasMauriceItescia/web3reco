@@ -1,4 +1,4 @@
-################## BDD PHP Projet ########################
+﻿################## BDD PHP Projet ########################
 
 CREATE DATABASE base3reco;
 
@@ -18,7 +18,7 @@ CREATE TABLE Product (
     typeId          INT  (3)  NOT NULL,
     price           FLOAT(5)  NOT NULL,
     stock           INT  (3)  NOT NULL,
-    discount        BOOLEAN,
+    discount        INT (2),
     FOREIGN KEY (typeId)  REFERENCES CategorieProd (typeId)
 );
 
