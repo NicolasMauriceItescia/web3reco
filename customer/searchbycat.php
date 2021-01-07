@@ -1,14 +1,36 @@
 <?php 
-    require("../included/dbconnect.php");
-    $bookTypes = "";
-    $sql = "SELECT name FROM CategorieProd"; 
-    $result = $dbh->query($sql);
-    while ( ($oneCategorie = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
-        $bookTypes .= '<option value ='.$oneCategorie['typeId'].' >' .$oneCategorie['name']. '</option>';
-    }
+    try{
+        require("../included/dbconnect.php");
+        $bookTypes = "";
+        // Query
+        $sql = "SELECT name FROM CategorieProd"; 
+        $result = $dbh->query($sql);
+        // Show all the categories
+        while ( ($oneCategorie = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
+            $bookTypes .= '<option value ='.$oneCategorie['typeId'].' >' .$oneCategorie['name']. '</option>';
+        }
+        $dbh = null;
+    }catch (Exception $e) {
+        // Error handeling
+        echo '<!DOCTYPE html>';
+        echo '<html lang="fr"><head>';
+        echo '<meta charset="utf-8">';
+        echo '<title>Problème rencontré</title>';
+        echo '</head><body>';
 
-  
-    
+        //Encoding error type
+        echo '<p>' . mb_convert_encoding($e->getMessage(), 'UTF-8', 'Windows-1252') . '</p>';
+        
+        // Synthaxe error type
+        if (isset($dbh) && $dbh->errorInfo()[0] == "42000") {
+            echo '<p>Erreur de syntaxe dans la requête SQL :</p>';
+            echo '<pre>' . $sql . '</pre>';
+        }
+        echo '</body></html>';
+
+        // Stop script
+        die;
+    }
 
 ?>
 <!DOCTYPE html>
