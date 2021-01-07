@@ -117,12 +117,12 @@ class formBuilder{
         $output .= "<label for='nameProduct'>Product name</label><input type='text' id='' name='nameProduct' value='$nameProduct' required><br>";
         $output .= "<label for='description'>Description</label><input type='text' id='' name='description' value='$description' required><br>";
         if($fairtrade!=0){
-            $output .= "<label for='fairtrade'>Fair trade</label><input type='checkbox' id='' name='fairtrade' checked><br>";
+            $output .= "<label for='fairtrade'>Fair trade</label><input type='checkbox' id='' name='fairtrade' value='yes'><br>";
         }else{
-            $output .= "<label for='fairtrade'>Fair trade</label><input type='checkbox' id='' name='fairtrade'><br>";
+            $output .= "<label for='fairtrade'>Fair trade</label><input type='checkbox' id='' name='fairtrade' value=''><br>";
         }
         
-        $output .= "<label for='types'>Book type</label><select name='types' value='$typeId'>";//Gérer la valeur dans la page insert
+        $output .= "<label for='types'>Book type</label><select name='types' value='$typeId' required>";//Gérer la valeur dans la page insert
         $output .= "<option value='none' selected disabled hidden>Select an Option</option>";
         $output .= "echo $typesTable";
         $output .= "</select><br>";

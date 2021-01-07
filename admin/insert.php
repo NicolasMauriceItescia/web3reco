@@ -21,7 +21,7 @@
             $nameProduct = $_POST['nameProduct'];
             $description = $_POST['description'];
             $fairtrade;
-            if(isset($_POST['fairtrade']) && $_GET['fairtrade'] == 'Yes'){$fairtrade = 1;}else{$fairtrade = 0;}
+            if(isset($_POST['fairtrade']) && $_POST['fairtrade'] == 'Yes'){$fairtrade = 1;}else{$fairtrade = 0;}
             $typeId = (string) filter_input(INPUT_POST, 'types', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $price = $_POST['price'];
             $stock = $_POST['stock'];
