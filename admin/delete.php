@@ -5,18 +5,16 @@
         $form = new formbuilder();
         $bookListSuppr="";
         
-        // Search by name
+        // Query scrolling
         $sql = "SELECT idProduct, nameProduct FROM Product ";
         $result = $dbh->query($sql);
-        var_dump($result);
-        while(($oneBook = $result->fetchAll(PDO::FETCH_ASSOC)) !=FALSE){
+        while(($oneBook = $result->fetch(PDO::FETCH_ASSOC)) !=FALSE){
             $bookListSuppr .= '<option value ='.$oneBook['idProduct'].' >' .$oneBook['nameProduct']. '</option>';
         };
-        
 
-
-        
-        
+        $selectedBook = (string) filter_input(INPUT_GET,'namestring',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $sql = "DELETE FROM Product WHERE nameProduct = '$selectedBook'";
+        $resultDelete = $dbh->query($sql);
         
     }catch(Exception $e){
         echo '<!DOCTYPE html>';
@@ -49,15 +47,12 @@
                     <div class = "operation">
                         <?php
                             echo $form-> deleteBook($bookListSuppr);
-                            var_dump($bookListSuppr);
-                            var_dump($oneBook);
+                           
                         ?>
                     </div>
                     <div class = "result">
                         <?php
-                            
-                            $selectedBook = (string) filter_input(INPUT_GET,'namestring',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                            echo $bookListSuppr;
+                            echo $resultDelete;
                         ?>
                     </div>
                 </section>
