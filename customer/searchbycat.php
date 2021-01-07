@@ -56,13 +56,13 @@
                 <section>
                     <div class="operation">
                         <?php 
-                            echo $form->getBooksByCat($bookTypes);        
+                            echo $form->getSelect($bookTypes);        
                         ?>
                     </div>
                     <div class="result">
                         <ul>
                             <?php
-                            $selectedTypeId = (string) filter_input(INPUT_GET,'namestring',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            $selectedTypeId = (string)filter_input(INPUT_GET,'list',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                             // Query 3 => show books of categorie choosen
                             $bookList = "";
                             $sql="SELECT nameProduct, price FROM Product WHERE typeId ='$selectedTypeId'";
