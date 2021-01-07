@@ -40,7 +40,30 @@
         // Stop script
         die;
     }
+    function checkInput(PDO $dbh, $selectedBook){
+        if(isset($_POST['idProduct'])
+        && isset($_POST['nameProduct'])
+        && isset($_POST['description'])
+        && isset($_POST['stock'])){
+            $idProduct = $_POST['idProduct'];
+            $nameProduct = $_POST['nameProduct'];
+            $description = $_POST['description'];
+            $fairtrade;
+            if(isset($_POST['fairtrade'])){$fairtrade = 1;}else{$fairtrade = 0;}
+            $typeId = (string) filter_input(INPUT_POST, 'types', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $price = $_POST['price'];
+            $stock = $_POST['stock'];
+            $discount = $_POST['discount'];
 
+            $sql = "UPDATE Product SET idProduct='$idProduct' , nameProduct='$nameProduct' , description='$description' , fairtrade='$fairtrade' , typeId='$typeId', price='$price' , stock='$stock' , discount='$discount' WHERE idProduct='$selectedBook'" ;
+
+            try{
+                $dbh->query($sql);
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+        }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -63,37 +86,25 @@
                         <?php 
                             //Display form with the book array
                             echo $form->getSelect($booksTable);
-
-                            //Get result
-                            $selectedBook = (string)filter_input(INPUT_GET,'list',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                            $sql = "SELECT * FROM Product WHERE idProduct='$selectedBook'";
-                            $result = $dbh->query($sql);
-
-
-                            while ( ($entry = $result->fetch(PDO::FETCH_GROUP)) != FALSE) {
-                                $idProduct .= $entry['idProduct'];
-                                $nameProduct .= $entry['nameProduct'];
-                                $description .= $entry['description'];
-                                $price .= $entry['price'];
-                                $stock .= $entry['stock'];
-                                $typeId .= $entry['typeId'];
-                                $fairtrade .= $entry['fairtrade'];
-                                $discount .= $entry['discount'];
-                            }
-                            echo $form->editBook($bookTypes, $idProduct,$nameProduct,$description,$fairtrade,$typeId,$price,$stock,$discount);
-
-                            
-/*                             if(isset($_GET['list'])){
-                                
-                                $namestring = $_GET['namestring'];
-                                $sql = "SELECT * FROM product WHERE nameProduct LIKE '%$namestring%'";
+                            if(isset($_GET['list'])){
+                                //Get result
+                                $selectedBook = (string)filter_input(INPUT_GET,'list',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                                $sql = "SELECT * FROM Product WHERE idProduct='$selectedBook'";
                                 $result = $dbh->query($sql);
-                                $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($resultTable as $entry) {
-                                    //var_dump($entry);
-                                    echo '<li>'.$entry["nameProduct"].'</li><br>';
+
+                                while ( ($entry = $result->fetch(PDO::FETCH_GROUP)) != FALSE) {
+                                    $idProduct .= $entry['idProduct'];
+                                    $nameProduct .= $entry['nameProduct'];
+                                    $description .= $entry['description'];
+                                    $price .= $entry['price'];
+                                    $stock .= $entry['stock'];
+                                    $typeId .= $entry['typeId'];
+                                    $fairtrade .= $entry['fairtrade'];
+                                    $discount .= $entry['discount'];
                                 }
-                            } */
+                                echo $form->editBook($bookTypes, $idProduct,$nameProduct,$description,$fairtrade,$typeId,$price,$stock,$discount);
+                                checkInput($dbh, $selectedBook);
+                            }
                         ?>
                     </div>
                 </section>
