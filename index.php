@@ -8,7 +8,7 @@
 			$_SESSION['connect'] = 1;
 			$_SESSION['usertype'] = 'user';
 			header('location: ./customer.php');
-		}else if($username=='admin'&& $username=='root'){
+		}else if($username=='admin'&& $password=='root'){
 			$_SESSION['connect'] = 1;
 			$_SESSION['usertype'] = 'admin';
 			header('location: ./admin.php');

@@ -2,37 +2,50 @@
     try{
         require("../included/checkifadmin.php");
         require("../included/dbconnect.php");
-        $sql = "SELECT typeId, name FROM categorieprod";
-        $result = $dbh->query($sql);
+        require("../misc/formbuilder.php");
+        
+        $form = new formBuilder();
+        
         $typesTable = "";
+        
+        // Query 1 => show list by name of book types
+        $sql = "SELECT typeId, name FROM categorieProd";
+        $result = $dbh->query($sql);
         while ( ($entry = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
-            $typesTable .= '<option value="'.$entry['typeId'].''.$entry['nameProduct'].''.$entry['description'].''.$entry['price'].'
-            '.$entry['stock'].''.$entry['typeId'].''.$entry['fairtrade'].''.$entry['discount'].'">'.$entry['nameProduct'].'</option>';
+            $typesTable .= '<option value="'.$entry['typeId'].'">'.$entry['name'].'</option>';
         }
     }catch(Exception $e){
         $e->getMessage();
     }
+
+    //---FUNCTIONS---//
+
 
     function checkInput(PDO $dbh){
         if(isset($_POST['idProduct'])
         && isset($_POST['nameProduct'])
         && isset($_POST['description'])
         && isset($_POST['stock'])){
+
+            // Assign result to variable
             $idProduct = $_POST['idProduct'];
             $nameProduct = $_POST['nameProduct'];
             $description = $_POST['description'];
             $fairtrade;
+            // check is fairtrade is true or false 
             if(isset($_POST['fairtrade']) && $_POST['fairtrade'] == 'Yes'){$fairtrade = 1;}else{$fairtrade = 0;}
             $typeId = (string) filter_input(INPUT_POST, 'types', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $price = $_POST['price'];
             $stock = $_POST['stock'];
+            // check if there is a discount
             if(!isset($_POST['discount'])){
                 $discount = 0;
             }else{
                 $discount = $_POST['discount'];
             }
             $discount = $_POST['discount'];
-
+            
+            // Query 1 => create book with attributs
             $sql = "INSERT INTO Product (idProduct, nameProduct, description, fairtrade, typeId, price, stock, discount) 
             VALUES ('$idProduct', '$nameProduct', '$description','$fairtrade','$typeId', '$price', '$stock', '$discount');";
             try{
@@ -67,9 +80,8 @@
                 <section>
                     <div class="operation">
                         <?php 
-
-                            require("../misc/formbuilder.php");
-                            $form = new formBuilder();
+                            // form edit new book with text field for attributs
+                            // form from misc/formbuilder.php  
                             echo $form->addBook($typesTable);
                             checkInput($dbh);
                         ?>

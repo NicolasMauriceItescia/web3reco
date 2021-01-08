@@ -6,18 +6,22 @@
         $form = new formbuilder();
         $bookListSuppr="";
         
-        // Query scrolling
+        // Query 1 => scrolling name of book
         $sql = "SELECT idProduct, nameProduct FROM Product ";
         $result = $dbh->query($sql);
         while(($oneBook = $result->fetch(PDO::FETCH_ASSOC)) !=FALSE){
             $bookListSuppr .= '<option value ='.$oneBook['idProduct'].' >' .$oneBook['nameProduct']. '</option>';
         };
         
+        //---FUNCTIONS---//
+
+        // Delete book selected in scrolling bar
         function deleteBook(PDO $dbh, $selectedBook){
             $sql = "DELETE FROM product WHERE idProduct='$selectedBook'";
             $result = $dbh->query($sql);
         }
 
+        // Check if book erase from database
         function checkIfRemoved(PDO $dbh, $selectedBook){
             $sql = "SELECT idProduct FROM product WHERE idProduct='$selectedBook'";
             $result = $dbh->query($sql);
@@ -59,7 +63,11 @@
                 <section>
                     <div class = "operation">
                         <?php
+                            // form scrolling name
+                            // form from misc/formbuilder.php  
                             echo $form-> deleteBook($bookListSuppr);
+
+                            //Remove the book + show messages
                             if(isset($_POST['bookToDelete'])){
                                 $selectedBook = (string) filter_input(INPUT_POST,'bookToDelete',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                                 deleteBook($dbh, $selectedBook);
