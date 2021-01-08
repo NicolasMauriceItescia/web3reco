@@ -15,7 +15,7 @@ class formBuilder{
         $output = "";
         $output .= "<form action='' method='GET'>";
         $output .= "<input type='text' id='' name='namestring' required>";
-        $output .=  "<button type='submit'>Valider</button>";
+        $output .=  "<button type='submit'>Validate</button>";
         $output .=  "</form>";
 
        return $output;
@@ -32,7 +32,7 @@ class formBuilder{
             $output .= "echo $list;";
             $output .= "</select>";
            // $output .= "<input type='text' id='' name='namestring'>";
-            $output .=  "<button type='submit'>Valider</button>";
+            $output .=  "<button type='submit'>Validate</button>";
             $output .=  "</form>";
     
        return $output;
@@ -45,7 +45,7 @@ class formBuilder{
         $output = "";
             $output .= "<form action='' method='GET'>";
             $output .= "<input type='text' id='' name='namestring' required>";
-            $output .=  "<button type='submit'>Valider</button>";
+            $output .=  "<button type='submit'>Validate</button>";
             $output .=  "</form>";
        
     
@@ -70,7 +70,7 @@ class formBuilder{
         $output .= "<label for='stock'>Price</label><input type='text' id='' name='price' required><br>";
         $output .= "<label for='stock'>Quantity</label><input type='text' id='' name='stock' required><br>";
         $output .= "<label for='discount'>Discount</label><input type='text' id='' name='discount'><br>";
-        $output .=  "<button type='submit'>Valider</button>";
+        $output .=  "<button type='submit'>Validate</button>";
         $output .=  "</form>";
     
        return $output;
@@ -111,7 +111,7 @@ class formBuilder{
         $output .= "<select name= 'bookToDelete' >";
         $output .= "echo $bookListSuppr";
         $output .= "</select>";
-        $output .=  "<button type='submit'>Valider</button>";
+        $output .=  "<button type='submit'>Validate</button>";
         $output .=  "</form>";
        
     
@@ -137,7 +137,7 @@ class formBuilder{
         $output .= "<label for='stock'>Price</label><input type='text' id='' name='price' value='$price' required><br>";
         $output .= "<label for='stock'>Quantity</label><input type='text' id='' name='stock' value='$stock'  required><br>";
         $output .= "<label for='discount'>Discount</label><input type='text' id='' name='discount' value='$discount' ><br>";
-        $output .=  "<button type='submit'>Valider</button>";
+        $output .=  "<button type='submit'>Validate</button>";
         $output .=  "</form>";
        return $output;
     }
