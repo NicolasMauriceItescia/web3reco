@@ -1,5 +1,6 @@
 <?php 
     try{
+        require("../included/checkifadmin.php");
         require("../included/dbconnect.php");
         require("../misc/formbuilder.php");
 

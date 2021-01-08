@@ -9,7 +9,7 @@ class Cart {
 
     // getter
     public function getCartShopping(){
-        return $this -> CartShopping
+        return $this -> CartShopping;
     }
 
     //methode boolean

@@ -1,6 +1,7 @@
 <?php 
     require("../misc/formbuilder.php");
     require("../included/dbconnect.php");
+    require("../included/checkifuser.php"); 
     $form = new formBuilder();
 ?>
 <!DOCTYPE html>

@@ -1,4 +1,5 @@
 <?php 
+    require("../included/checkifuser.php");   
     try{
         require_once("../included/dbconnect.php");
         require_once("../misc/formbuilder.php");

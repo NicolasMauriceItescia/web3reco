@@ -1,5 +1,5 @@
 <?php 
-    
+    require("./included/checkifadmin.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +20,7 @@
 					<li><a href="./admin/insert.php">Add products to inventory</a></li>
 					<li><a href="./admin/delete.php">Remove products from inventory</a></li>
                     <li><a href="./admin/update.php">Edit products</a></li>
-					<li class="back"><a href="./index.php">Logout</a></li>
+					<li class="back"><a href="./misc/logout.php">Logout</a></li>
     			</ul>
     		</article>
     	</main>

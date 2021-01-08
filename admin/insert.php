@@ -1,5 +1,6 @@
 <?php 
     try{
+        require("../included/checkifadmin.php");
         require("../included/dbconnect.php");
         $sql = "SELECT typeId, name FROM categorieprod";
         $result = $dbh->query($sql);
