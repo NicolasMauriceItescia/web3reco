@@ -15,6 +15,8 @@
 ##Complétion des Stories
 Statuts: TO DO | WIP | DONE
 
+###ETAPE 1
+
 - US 1A: DONE
 Concevoir une base de données et peupler cette base de données Livrable = un script .sql contenant une exportation de la base de données
 
@@ -59,5 +61,21 @@ Coder en considérant tous les cas de figure. Par exemple, une recherche ne four
 
 - US 1Q: WIP
 Coder en respectant les bonnes pratiques : UTF-8, convention de nommage des fichiers, code HTML valide, code CSS valide, absence de duplication de code, code PHP respectant des conventions de nommage et code PHP documenté
+
+###ETAPE 2
+
+- US 2E: DONE 
+Avoir des gestionnaires des produits pouvant se connecter et se déconnecter.
+
+- US 2F: DONE
+Les gestionnaires de produits peuvent manipuler les produits (CRUD).
+
+- US 2G: DONE
+Avoir des utilisateurs (futurs clients!) pouvant se connecter et se déconnecter.
+
+###Liens annexes
+
+- Lien GH: https://github.com/Yegabebar/web3reco
+- Lien Trello: https://trello.com/b/jmhNkiUU/p%C3%A9hachepet-market
 
 *Membres: Lea, Sarah, Mathieu*

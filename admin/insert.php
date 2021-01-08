@@ -6,8 +6,7 @@
         $result = $dbh->query($sql);
         $typesTable = "";
         while ( ($entry = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
-            $typesTable .= '<option value="'.$entry['typeId'].''.$entry['nameProduct'].''.$entry['description'].''.$entry['price'].'
-            '.$entry['stock'].''.$entry['typeId'].''.$entry['fairtrade'].''.$entry['discount'].'">'.$entry['nameProduct'].'</option>';
+            $typesTable .= '<option value="'.$entry['typeId'].'">'.$entry['name'].'</option>';
         }
     }catch(Exception $e){
         $e->getMessage();
