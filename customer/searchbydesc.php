@@ -1,5 +1,7 @@
 <?php 
-    
+    require("../misc/formbuilder.php");
+    require("../included/dbconnect.php");
+    $form = new formBuilder();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,25 +20,31 @@
     			</header>
                 <section>
                     <div class="operation">
-                        <?php 
-                            require("../misc/formbuilder.php");
-                            $form = new formBuilder();
-                            echo $form->getBooksByDesc();
-                            
+                        <?php
+                            //form from misc/formbuilder.php     
+                            echo $form->getBooksByDesc();                           
                         ?>
                     </div>
                     <div class="result">
                         <ul>
                             <?php 
                                 if(isset($_GET['namestring'])){
-                                    require("../included/dbconnect.php");
+                                    
+                                    //get the user entry
                                     $namestring = $_GET['namestring'];
+                                    
+                                    // Query 1 => get all the book with description like user entry
                                     $sql = "SELECT nameProduct, price FROM Product WHERE description LIKE '%$namestring%'";
                                     $result = $dbh->query($sql);
                                     $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
-                                    foreach ($resultTable as $entry) {
-                                        //var_dump($entry);
-                                        echo '<li>'.$entry["nameProduct"].' prix:'.$entry["price"].'</li><br>';
+                                    
+                                    //Show list of books if query not empty
+                                        if(!empty($resultTable)){                                 
+                                        foreach ($resultTable as $entry) {
+                                            echo '<li>'.$entry["nameProduct"].'prix:'.$entry["price"].'</li><br>';
+                                        }
+                                    }else{
+                                        echo 'No Book answering you research!';
                                     }
                                 }
                             ?>

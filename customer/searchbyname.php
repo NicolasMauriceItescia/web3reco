@@ -1,5 +1,7 @@
 <?php 
-    
+    require("../included/dbconnect.php");
+    require("../misc/formbuilder.php");   
+    $form = new formBuilder();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,11 +20,9 @@
     			</header>
                 <section>
                     <div class="operation">
-                        <?php 
-                            require("../misc/formbuilder.php");
-                            $form = new formBuilder();
-                            echo $form->getBooksByName();
-                            
+                        <?php
+                            //form from misc/formbuilder.php      
+                            echo $form->getBooksByName();    
                         ?>
 
                     </div>
@@ -31,14 +31,22 @@
             
                         <?php 
                             if(isset($_GET['namestring'])){
-                                require("../included/dbconnect.php");
+                                
+                                //get the user entry
                                 $namestring = $_GET['namestring'];
+
+                                // Query 1 => get all the book with name like user entry
                                 $sql = "SELECT * FROM product WHERE nameProduct LIKE '%$namestring%'";
                                 $result = $dbh->query($sql);
                                 $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($resultTable as $entry) {
-                                    //var_dump($entry);
-                                    echo '<li>'.$entry["nameProduct"].'</li><br>';
+
+                                //Show list of books if query not empty
+                                if(!empty($resultTable)){   
+                                    foreach ($resultTable as $entry) {
+                                        echo '<li>'.$entry["nameProduct"].'</li><br>';
+                                    }
+                                }else{
+                                    echo 'No Book answering you research!';
                                 }
                             }
                         ?>

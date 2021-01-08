@@ -6,10 +6,10 @@
       
         $bookTypes="";
          
-        // Query 1 => categories scroll
+        // Query 1 => get the book types name
         $sql = "SELECT name, typeId FROM CategorieProd"; 
         $result = $dbh->query($sql);
-        // Show all the categories
+        // Show all the book types name
         while ( ($oneType = $result->fetch(PDO::FETCH_ASSOC)) != FALSE) {
             $bookTypes .= '<option value ='.$oneType['typeId'].' >' .$oneType['name']. '</option>';
         };
@@ -56,28 +56,28 @@
                 <section>
                     <div class="operation">
                         <?php 
+                            //form from misc/formbuilder.php
                             echo $form->getSelect($bookTypes);        
                         ?>
                     </div>
                     <div class="result">
                         <ul>
                             <?php
+                            // get the book types Id from 1st query
                             $selectedTypeId = (string)filter_input(INPUT_GET,'list',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                            // Query 3 => show books of categorie choosen
-                            $bookList = "";
-                            $sql="SELECT nameProduct, price FROM Product WHERE typeId ='$selectedTypeId'";
                             
+                            // Query 2 => associate Id types from table CategorieProd to Product
+                            $bookList = "";
+                            $sql="SELECT nameProduct, price FROM Product WHERE typeId ='$selectedTypeId'";  
                             $result = $dbh->query($sql);
-                         
                             if ($result == false){
                                 echo 'false probleme';
                                 exit;
                             }
-                            //var_dump($result);  
-                             $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
 
+                            // get results and show them all
+                             $resultTable = $result->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($resultTable as $entry) {
-                                    //var_dump($entry);
                                     echo '<li>'.$entry["nameProduct"].'</li><br>';
                                 }
                             

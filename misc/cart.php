@@ -21,8 +21,13 @@ class Cart {
         //foreach($this->cartShopping as ...)
     }
 
-    public function totalAmount(){
-
+    public function totalAmount($cartShopping){
+        $allPrice = array_column($cartShopping,'')
+        $totalCost = 0;
+        foreach($cartShopping['price'] as $value){
+            $totalCost += $value;  
+        }
+        return $totalCost;
     }
 
 }

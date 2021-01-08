@@ -1,4 +1,6 @@
 <?php 
+
+	//Fichier Connexion PDO to database
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'usr_bobby');
 	define('DB_PASSWORD', 'klm');

@@ -1,10 +1,14 @@
 <?php
 class formBuilder{
 
+    // Constructor forms
     public function __construct() {
         
     }
 
+    //---------------------------METHODES---------------------------//
+
+    // serach a book by his name //
     public function getBooksByName(){
         //Method: GET
         //1 textfield, submit
@@ -17,6 +21,7 @@ class formBuilder{
        return $output;
     }
 
+     // scrolling bar with choice //
     public function getSelect($list){
         //Method: GET
         //<select> to choose the book type, submit
@@ -33,6 +38,7 @@ class formBuilder{
        return $output;
     }
 
+    // search a book by his description //
     public function getBooksByDesc(){
         //Method: GET
         //1 textfield, submit
@@ -46,6 +52,7 @@ class formBuilder{
        return $output;
     }
     
+    //form with labels for attributes to insert new books //
     public function addBook($typesTable){
         //Method: POST
         //5 textfields: nameProduct, description
@@ -95,6 +102,7 @@ class formBuilder{
     return $output;
     } */
     
+    //scrolling bar with book name to delete selected //
     public function deleteBook($bookListSuppr){
         //Method: POST
         //1 <select> to choose the book title we want to delete, submit
@@ -110,6 +118,7 @@ class formBuilder{
        return $output;
     }
 
+    // form with labels for attributes to modify book parameters //
     public function editBook($typesTable, $idProduct,$nameProduct,$description,$fairtrade,$typeId,$price,$stock,$discount){
         $output = "";
         $output .= "<form action='' method='POST'>";
